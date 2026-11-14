@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://d3p7kvsosijt8"]
+
+[ext_resource type="Script" uid="uid://cjt48lp8m1xrv" path="res://ronaldo.gd" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://bf0nc47jdpjef" path="res://WhatsApp_Image_2026-11-14_at_12.20.58_AM-removebg-preview.png" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://cvudp7ngqd627" path="res://2120052_A_JPG_Output-removebg-preview.png" id="3_lquwl"]
+[ext_resource type="Texture2D" uid="uid://bcg6i24alk2yq" path="res://meter_bar.jpeg" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://s0nf7jr04s7n" path="res://indicator.gd" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://dg3fd61tmeq1" path="res://9675651a-ed00-4594-a397-a06e3a0c0530.jpeg" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bqpnv0coshd12" path="res://Capture.JPG" id="7_272bh"]
+[ext_resource type="Script" path="res://height_scale.gd" id="8_hscale"]
+[ext_resource type="Script" path="res://milestone_manager.gd" id="9_mstone"]
+[ext_resource type="Script" path="res://game_manager.gd" id="10_gmgr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kxuq"]
+size = Vector2(106.1875, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mti6b"]
+size = Vector2(292, 69.5)
+
+[node name="Main" type="Node2D" unique_id=807623708]
+
+[node name="Ronaldo" type="CharacterBody2D" parent="." unique_id=438831603]
+position = Vector2(0, 375)
+script = ExtResource("1_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ronaldo" unique_id=1654466659]
+position = Vector2(0, 250)
+scale = Vector2(0.54237264, 0.5304296)
+texture = ExtResource("2_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ronaldo" unique_id=645482221]
+position = Vector2(1, 33)
+shape = SubResource("RectangleShape2D_4kxuq")
+
+[node name="Camera2D" type="Camera2D" parent="Ronaldo" unique_id=274885236]
+offset = Vector2(0, 100)
+
+[node name="Trampoline" type="StaticBody2D" parent="." unique_id=2113019866]
+position = Vector2(-165, 325)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trampoline" unique_id=1760820862]
+position = Vector2(168, 184)
+shape = SubResource("RectangleShape2D_mti6b")
+
+[node name="Sprite2D" type="Sprite2D" parent="Trampoline" unique_id=532609214]
+position = Vector2(169, 450)
+scale = Vector2(0.522, 0.26)
+texture = ExtResource("3_lquwl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=272606698]
+
+[node name="TimingBarUI" type="Control" parent="CanvasLayer" unique_id=2058736485]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 45.0
+offset_top = 25.0
+offset_right = 85.0
+offset_bottom = 65.0
+
+[node name="BarGraphic" type="TextureRect" parent="CanvasLayer/TimingBarUI" unique_id=1883803623]
+layout_mode = 0
+offset_left = 45.0
+offset_top = -37.0
+offset_right = 395.0
+offset_bottom = 20.0
+texture = ExtResource("4_1bvp3")
+
+[node name="Indicator" type="ColorRect" parent="CanvasLayer/TimingBarUI/BarGraphic" unique_id=1197219640]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 40.0
+script = ExtResource("5_lquwl")
+
+[node name="HeightScale" type="Control" parent="CanvasLayer" unique_id=1500000001]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -260.0
+offset_right = -20.0
+offset_bottom = 260.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_hscale")
+
+[node name="MilestoneManager" type="Control" parent="CanvasLayer" unique_id=1500000002]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("9_mstone")
+
+[node name="GameManager" type="Control" parent="CanvasLayer" unique_id=1500000003]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("10_gmgr")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1593926127]
+z_index = -1
+position = Vector2(-1, 517)
+scale = Vector2(1.1597781, 1.1317222)
+texture = ExtResource("6_7mycd")
+
+[node name="SkyTexture" type="TextureRect" parent="." unique_id=1604060707]
+z_index = -2
+offset_left = -573.0
+offset_top = -4143.0
+offset_right = 576.0
+offset_bottom = 152.0
+texture = ExtResource("7_272bh")
+stretch_mode = 6
